@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>George Travels: Home</title>
+</head>
+<body>
+     
+     
+     <h4>List Of Rides</h4>
+     <table border=1>
+           <tr>
+              <th>Booking ID</th>
+              <th></th>
+              <th></th>
+              
+           </tr>
+     </table>
+     
+     
+     <h4>List Of Cabs</h4>
+     
+</body>
+</html>

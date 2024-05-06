@@ -1,0 +1,24 @@
+package com.george.app;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CabBookingMsApplicationTests {
+
+	
+	@Autowired
+	RideRepo rideRepo;
+	
+	@Autowired
+	CabRepo cabRepo;
+	
+	@Test
+	void contextLoads() {
+	}
+	
+	
+	
+	
+
+}

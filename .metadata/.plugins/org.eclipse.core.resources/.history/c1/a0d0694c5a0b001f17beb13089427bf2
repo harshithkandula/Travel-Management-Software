@@ -1,0 +1,60 @@
+/*package com.george.app;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.george.app.Ride;
+
+public class AppTest {
+   
+	@Autowired
+	RideRepo rideRepo;
+	
+	@Autowired
+	CabRepo cabRepo;
+	
+	Ride r1 = new 	Ride();
+	
+	
+	
+	@BeforeEach
+	void setRideValues() {
+		r1.setCabId(9);
+		r1.setCustomer_name("Karan");
+		r1.setCustomerPhNo("8664910273");
+		r1.setSource("Tirupathi");
+		r1.setDestination("Karimnagar");
+		r1.setPickUpTime("24-04-2024 12:30");
+	}
+	
+	@Test
+	public void databaseTest() {
+		
+		//Ride r2 = new Ride(9, "Karan", "8664910273", "Tirupathi", "Karimnagar", "24-04-2024 13:30");
+		rideRepo.save(r1);
+		
+		Ride td = rideRepo.findById(r1.getBookingId());
+		
+		assertEquals(r1.getCabId(), td.getCabId());
+		assertEquals(r1.getCustomer_name(),td.getCustomer_name());
+		assertEquals(r1.getCustomerPhNo(), td.getCustomerPhNo());
+		assertEquals(r1.getSource(), td.getSource());
+		assertEquals(r1.getDestination(), td.getDestination());
+		assertEquals(r1.getPickUpTime(), td.getPickUpTime());
+		
+		
+	}
+	
+	
+	
+	@AfterAll
+	void ridRideValues() {
+		rideRepo.deleteById(r1.getBookingId());
+	}
+}*/

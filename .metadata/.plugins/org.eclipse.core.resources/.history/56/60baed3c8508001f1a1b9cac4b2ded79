@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+       
+       <h2>Welcome to George Travels</h2>
+       <h2>We ride to your destination of success</h2>
+       
+       <div>
+          <ul>
+             <li>
+                <button>
+                    <a href="index.jsp">Home</a>
+                </button>
+             </li>
+             <li class="ddn">
+                <button>
+                     <a>Ride</a>
+                </button>
+                <div class="ddn-ctn">
+                    <a>Book  Ride</a>
+                </div>
+                <div class="ddn-ctn">
+                    <a>List Of Rides</a>
+                </div>
+             </li>
+             <li>
+                <button>
+                      <a>Cab</a>
+                </button>
+                <div class="ddn-ctn">
+                   <a>Add Cab</a>
+                </div>
+                <div class="ddn-ctn">
+                    <a>List Of Cabs</a>
+                </div>
+             </li>
+             
+             <li>
+                <button>Book A Ride</button>
+             </li>
+             <li>
+                <button><a href="">Calculate Fare</a></button>
+             </li>
+          </ul>
+       </div>
+</body>
+</html>

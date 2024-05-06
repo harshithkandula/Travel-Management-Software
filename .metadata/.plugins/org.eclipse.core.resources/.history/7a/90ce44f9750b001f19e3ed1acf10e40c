@@ -1,0 +1,169 @@
+package com.george.app;
+public class Db {
+
+	Connection conn;
+	PreparedStatement ps;
+	
+	
+       public Db() {
+ 		
+		try {
+			  Class.forName("com.mysql.cj.jdbc.Driver");
+			   conn = DriverManager.getConnection("jdbc:mysql://localhost/travelcompany","root","Ias@2025");
+		   } catch (ClassNotFoundException e) {
+			         // TODO Auto-generated catch block
+			         e.printStackTrace();
+		            } catch (SQLException e) {
+			         // TODO Auto-generated catch block
+			           e.printStackTrace();
+		        }
+	  }
+       
+       
+       public int addRide(Ride r) {
+   		int res=0;
+   		
+   		try {
+   			
+   			String sql = "insert into ride values(null,?,?,?,?,?,?,?,?,?)";
+   			ps = conn.prepareStatement(sql);
+   			ps.setInt(1, r.getCabId());
+   			ps.setString(2, r.getCustomer_name());
+   			ps.setString(3, r.getCustomerPhNo());
+   			ps.setString(4, r.getSource());
+   			ps.setString(5, r.getDestination());
+   			ps.setString(6, r.getPickUpTime());
+   			ps.setString(7, r.getDropTime());
+   			ps.setInt(8, r.getDistance());
+   			ps.setInt(9, r.getFare());
+   			
+   			res = ps.executeUpdate();
+   		}catch(Exception e) {
+   			e.printStackTrace();		
+   		}
+   		
+   		return res;
+   	}
+       
+       public int addCab(Cab c) {
+   		int res=0;
+   		
+   		try {
+   			
+   			String sql = "insert into cab values(null, ?, ?, ?, ?, ?)";
+   			ps = conn.prepareStatement(sql);
+   			ps.setString(1, c.getDriverName());
+   			ps.setString(2, c.getRtNumber());
+   			ps.setString(3, c.getVehicleType());
+   			ps.setString(4, c.getPhoneNumber());
+   			ps.setString(5, c.getBookingStatus());
+   			
+   			res = ps.executeUpdate();
+   		}catch(Exception e) {
+   			e.printStackTrace();
+   		}
+   		
+   		return res;
+   	}
+
+       
+       public ArrayList<Ride> fetchRideDetails(int rid){
+   		
+   		ArrayList<Ride> rd = new ArrayList<Ride>();
+   		Ride r = new Ride();
+   		String sqlcmd = "select * from ride where rid=?";
+   		
+   		try {
+   			
+   			ps = conn.prepareStatement(sqlcmd);
+   			ps.setInt(1, rid);
+   			
+   			ResultSet set = ps.executeQuery();
+   			while(set.next()) {
+   				r.setBookingId(set.getInt(1));
+   				r.setCabId(set.getInt(2));
+   				r.setCustomer_name(set.getString(3));
+   				r.setCustomerPhNo(set.getString(4));
+   				r.setSource(set.getString(5));
+   				r.setDestination(set.getString(6));
+   				r.setPickUpTime(set.getString(7));
+   				r.setDropTime(set.getString(8));
+   				r.setDistance(set.getInt(9));
+   				r.setFare(set.getInt(10));
+   				
+   				rd.add(r);
+   				
+   				
+   			}
+   			
+   		}catch(Exception e) {
+   			e.printStackTrace();
+   		}
+   		
+   		return rd;
+   	}
+   
+       public ArrayList<Cab> fetchCabDetails(int cabId){
+   		
+		   ArrayList<Cab> cd = new ArrayList<Cab>();
+		   Cab c = new Cab();
+		   String sqlcmd = "select * from cab where cab_id=?";
+		
+		   try {
+			
+			    ps = conn.prepareStatement(sqlcmd);
+			    ps.setInt(1, cabId);
+			
+			    ResultSet set = ps.executeQuery();
+			    while(set.next()) {
+				     /*r.setBookingId(set.getInt(1));
+				     r.setCabId(set.getInt(2));
+				     r.setCustomer_name(set.getString(3));
+				     r.setCustomerPhNo(set.getString(4));
+				     r.setSource(set.getString(5));
+				     r.setDestination(set.getString(6));
+				     r.setPickUpTime(set.getString(7));
+				     r.setDropTime(set.getString(8));
+				     r.setDistance(set.getInt(9));
+				     r.setFare(set.getInt(10));
+				
+				     rd.add(r);*/
+			    	
+			    	c.setCabId(set.getInt(1));
+			    	c.setDriverName(set.getString(2));
+			    	c.setRtNumber(set.getString(3));
+			    	c.setVehicleType(set.getString(4));
+			    	c.setPhoneNumber(set.getString(5));
+			    	c.setBookingStatus(set.getString(6));
+				
+			    	cd.add(c);
+				
+			   }
+			
+		     }catch(Exception e) {
+			       e.printStackTrace();
+		     }
+		
+		    return cd;
+	     }
+       
+       
+       public int deleteRide(int id) {
+   		String sqlcmd = "delete from ride where rid= ?";
+   		int res = 0;
+   		
+   		try {
+   			ps = conn.prepareStatement(sqlcmd);
+   			ps.setInt(1, id);
+   			res = ps.executeUpdate();
+   			
+   		}catch(Exception e) {
+   			e.printStackTrace();
+   		}
+   		
+   		return res;
+   	}
+
+
+	
+}

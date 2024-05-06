@@ -1,0 +1,123 @@
+package com.george.app;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+@RequestMapping("/book-cab")
+public class BookingController {
+   
+	@Autowired
+	private CabRepo cabRepo;
+	
+	
+   
+	@Autowired
+	private RideRepo rideRepo;
+	
+	@GetMapping("/cabs")
+	public List<Cab> getAllCabs(){
+		return cabRepo.findAll();
+	}
+	
+	
+	public List<Ride> getAllRides(){
+		return rideRepo.findAll();
+	}
+	/*@GetMapping("/add-cab")
+	public String addCabForm(Model model) {
+		
+		Cab c = new Cab();
+		model.addAttribute("c", c);
+		
+		return "addcab";
+	}*/
+	
+	@PostMapping("/add-cab")
+	public Cab addCab(Model model, @RequestBody Cab cab) {
+		
+		//cab.setBookingStatus("Not Booked");
+		cab = cabRepo.save(cab);
+		
+		model.addAttribute("cab", cab);
+		
+		return cab;
+	}
+	
+	@GetMapping("/cab-details/{id}")
+	public Cab getAllCabsWithId(Model model, @PathVariable int id){
+		Optional<Cab> cabdet = cabRepo.findById(id);
+		Cab cab = new Cab();
+		if(cabdet.isPresent()) {
+			cab = cabdet.get();
+			model.addAttribute("cab", cab);
+		}
+		
+		return cab;
+	}
+	
+	
+   
+	
+	
+	
+	
+	
+	@PostMapping("/fill-ride-info")
+	public Ride saveRideInfo(Model model, @RequestBody Ride ride) {
+		
+		System.out.printf("cabId: %s, Customer Name: %s", ride.getCabId(), ride.getCustomer_name());
+		ride = rideRepo.save(ride);
+		model.addAttribute("ride",ride);
+		
+		return ride;
+	}
+	
+	@PostMapping("/choose-cab")
+	public List<Cab> chooseCab(Model model, @RequestBody Ride ride) {
+		
+//		Cab cab = new Cab();
+//		cab.setStartLocation(ride.getSource()); 
+//		cab.setEndLocation(ride.getDestination());
+		//String d = ride.getDestination();
+		//List<Cab> cabs = cabRepo.findAllCabsWithStartLocationAndEndLocationAndBookingStatus(ride.getSource(), ride.getDestination(), "Not Booked");
+		//List<Cab> cabs = cabRepo.findByStartLocationAndEndLocation(cab.getStartLocation(), cab.getEndLocation());
+		
+		List<Cab> cabs = cabRepo.findAllByServiceLocation(ride.getSource());
+		List<Cab> emptyCabs = new ArrayList<Cab>() ;
+		
+		for(Cab c: cabs) {
+			if(c.getBookingStatus().equalsIgnoreCase("Not Booked")) {
+				emptyCabs.add(c);
+			}
+		}
+		
+		model.addAttribute("ecabs", emptyCabs);
+		
+		for(Cab c: emptyCabs) {
+			System.out.println(c.toString());
+		}
+		return emptyCabs;
+	}
+	
+	@PostMapping("/status-booked")
+	public Cab updateCabBookingStatus(@RequestBody Cab cab) {
+		
+		cab.setBookingStatus("Booked");
+		cab=cabRepo.save(cab);
+		
+		return cab;
+	}
+}

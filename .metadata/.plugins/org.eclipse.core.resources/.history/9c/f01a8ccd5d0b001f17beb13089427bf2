@@ -1,0 +1,24 @@
+package com.george.app;
+
+import com.george.app.Ride;
+import com.george.app.Db;
+
+public class AppTest {
+   
+	
+	Ride r = new Ride();
+	Db d = new Db();
+	
+	@BeforeEach
+	public void settingUpData() {
+		
+		r.setCabId(4);
+		r.setCustomer_name("Karan");
+		r.setCustomerPhNo("8664910273");
+		r.setSource("Tirupathi");
+		r.setDestination("Karimnagar");
+		r.setPickUpTime("24-04-2024 12:30");
+	}
+	
+	
+}

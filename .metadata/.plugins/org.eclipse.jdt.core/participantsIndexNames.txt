@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+E:\SpringBoot_Course_Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3698665677.index
+\User_Interface_MS\src\main\java
+E:\SpringBoot_Course_Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\454484737.index
+\User_Interface_MS\src\main\java

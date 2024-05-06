@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>George Travels: Home</title>
+</head>
+<body>
+     
+     
+     <h4>List Of Rides</h4>
+     <table border=1>
+           <tr>
+              <th>Booking ID</th>
+              <th>Customer Name</th>
+              <th>Cab Details</th>
+              <th>Update Ride Details</th>
+              
+           </tr>
+           <c:forEach var="x" items="${r}">
+           
+                <tr>
+                
+                   <td>${x.getBookingId()}</td>
+                   <td>${x.getCustomer_name()}</td>
+                   <td><a href="http://localhost:8080/book-cab/cab-details/'+x.getCabId()+'">${x.getCabId()}</a></td>
+                   <td><a href="http://localhost:9090/fare-details/'+x.getBookingId()+'">Update</a></td>
+                </tr>
+           </c:forEach>
+     </table>
+     
+     
+     <h4>List Of Cabs</h4>
+     <table border=1>
+            <tr>
+               <th>Cab ID</th>
+               <th>Driver Name</th>
+               <th>Registration Number</th>
+               <th>Vehicle Type</th>
+               <th>Phone Number</th>
+               <th>Service Location</th>
+               <th>Booking Status</th>
+            </tr>
+            <c:forEach var="y" items="${c}">
+                   <tr>
+                      <td>${y.getCabId()}</td>
+                      <td>${y.getDriverName()}</td>
+                      <td>${y.getRtNumber()}</td>
+                      <td>${y.getVehicleType()}</td>
+                      <td>${y.getPhoneNumber()}</td>
+                      <td>${y.getServiceLocation()}</td>
+                      <td>${y.getBookingStatus()}</td>
+                   </tr>
+            </c:forEach>
+     </table>
+</body>
+</html>

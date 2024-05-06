@@ -1,0 +1,14 @@
+package com.george.app;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class AppTest {
+
+	@Autowired
+	CabRepo cabRepo;
+	
+	@Autowired
+	RideRepo rideRepo;
+	
+	
+}

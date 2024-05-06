@@ -1,0 +1,59 @@
+package com.george.app;
+public class AppTest {
+   
+	@Autowired
+	RideRepo rideRepo;
+	
+	@Autowired
+	CabRepo cabRepo;
+	
+	Ride r1 = new 	Ride();
+	
+	@Test
+	void contextLoads() {
+	}
+	
+	@BeforeEach
+	void setRideValues() {
+		r1.setCabId(9);
+		r1.setCustomer_name("Karan");
+		r1.setCustomerPhNo("8664910273");
+		r1.setSource("Tirupathi");
+		r1.setDestination("Karimnagar");
+		r1.setPickUpTime("24-04-2024 12:30");
+	}
+	
+	@Test
+	public void databaseTest() {
+		
+		//Ride r2 = new Ride(9, "Karan", "8664910273", "Tirupathi", "Karimnagar", "24-04-2024 13:30");
+		rideRepo.save(r1);
+		
+		Ride td = rideRepo.findById(r1.getBookingId());
+		
+		assertEquals(r1.getCabId, td.getCabId);
+		assertEquals(r1.getCustomer_name(),td.getCustomer_name());
+		assertEquals(r1.getCustomerPhNo(), td.getCustomerPhNo());
+		assertEquals(r1.getSource(), td.getSource());
+		assertEquals(r1.getDestination(), td.getDestination());
+		assertEquals(r1.getPickUpTime(), td.getPickUpTime());
+		
+		
+	}
+	
+	@Test
+	public void editDatabaseTest() {
+		r1.setDropTime("25-04-2024 10:00");
+		r1.setDistance(900);
+		r1.setFare(r1.getDistance()*10);
+		
+		if(r1==null) {
+		    rideRepo.save(r1);
+		}
+	}
+	
+	@AfterAll
+	void ridRideValues() {
+		rideRepo.deleteById(r1.getBookingId());
+	}
+}

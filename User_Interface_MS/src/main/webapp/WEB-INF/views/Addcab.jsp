@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ include file="header.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style type="text/css">
+ *{
+   background-color: chocolate;
+ }
+</style>
+<title>Join Here</title>
+</head>
+<body>
+     <br><h2>Interested to Join George Travels</h2>
+     <h2>Register Here</h2>
+     
+     <form action="join-travels" method="post" modelAttribute="cab">
+     
+     
+             <label for="exampleInputDriverName" class="form-label">Driver Name</label>
+             <input type="text" class="form-control" name="driverName"   style="width:300px"><br><br>
+             <label for="exampleInputRegistrationNumber" class="form-label">Registration Number</label>
+             <input type="text" class="form-control" name="rtNumber" style="width:300px"><br><br>      
+             <label class="form-label" for="exampleInputVehicleType">Vehicle Type</label>
+             <input type="text" class="form-control" name="vehicleType" style="width:300px"><br><br>      
+             <label class="form-label" for="exampleInputPhoneNumber">Phone Number</label>
+             <input type="text" class="form-control" name="PhoneNumber" style="width:300px"><br><br>
+             <label class="form-label" for="exampleInputServiceLocation">Service Location</label>
+             <input type="text" class="form-control" name="serviceLocation" style="width:300px"><br><br> 
+             
+             <input type="hidden" class="form-control" name="bookingStatus" value="Not Booked" style="width:300px"><br><br>    
+                     
+                     
+                     
+                <input type="submit" value="submit">
+                     
+      </form>
+</body>
+</html>

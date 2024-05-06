@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+       
+       <h1>Welcome to George Travel Company</h1>
+        <p>We Serve to reach your destination</p>
+       
+       <div>
+                    <h4>Ride Details</h4>
+                    <p>${rides.getCabId()}</p>
+                    <p>${rides.getCustomer_name()}</p>
+                    <p>${rides.getCustomerPhNo()}</p>
+                    <p>${rides.getSource()}</p>
+                    <p>${rides.getDestination()}</p>
+                    <p>${rides.getPickUpTime()}</p>
+                    <p>${cabdetails}</p>
+                    
+        </div>
+                
+</body>
+</html>

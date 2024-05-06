@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ include file="header.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>George Travels: List Of Rides</title>
+</head>
+<body>
+    
+     <h2>List Of Rides</h2>
+     <table border="1">
+         <tr>
+            <th>Booking ID</th>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Cab Details</th>
+            <th>Pick Up Time</th>
+            <th>Drop Time</th>
+            <th>Fare</th>
+            
+            
+         </tr>
+         <c:forEach var="x" items="${r}">
+              <tr>
+                  <td>${x.getBookingId()}</td>
+                  <td>${x.getCustomer_name()}</td>
+                  <td>${x.getCustomerPhNo()}</td>
+                  <td>${x.getSource()}</td>
+                  <td>${x.getDestination()}</td>
+                  <td><a href="http://localhost:8080/book-cab/cab-details/${x.getCabId()}">Details</a></td>
+                  <td>${x.getPickUpTime()}</td>
+                  <td>${x.getDropTime()}</td>
+                  <td>${x.getFare()}</td>
+              </tr>
+         </c:forEach>
+     </table>
+</body>
+</html>

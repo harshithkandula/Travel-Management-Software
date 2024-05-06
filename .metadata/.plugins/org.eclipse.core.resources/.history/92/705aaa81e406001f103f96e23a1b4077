@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Join Here</title>
+</head>
+<body>
+     <h2>Interested to Join George Travels</h2>
+     <h2>Register Here</h2>
+     
+     <form action="/book-cab/add-cab" method="post" modelAttribute="cab">
+                     <div class="mb-3">
+                         <label for="exampleInputDriverName" class="form-label">Driver Name</label>
+                         <input type="text" class="form-control" name="driverName"   style="width:300px">
+                        
+                     </div>
+                     <div class="mb-3">
+                         <label for="exampleInputRegistrationNumber" class="form-label">Registration Number</label>
+                         <input type="text" class="form-control" name="rtNumber" style="width:300px">
+                     </div>
+                     <div class="mb-3">
+                         <label class="form-label" for="exampleInputVehicleType">Vehicle Type</label>
+                         <input type="text" class="form-control" name="vehicleType" style="width:300px">
+                         
+                     </div>
+                     
+                     <div class="mb-3">
+                         <label class="form-label" for="exampleInputPrice">Phone Number</label>
+                         <input type="text" class="form-control" name="PhoneNumber" style="width:300px">
+                         
+                     </div>
+                     
+                     <div class="mb-3">
+                         <label class="form-label" for="exampleInputPrice">Booking Status</label>
+                         <select name="bookingStatus" style="width:300px">
+                               <option value="Not Booked">Not Booked</option>
+                               <option value="Booked">Booked</option>
+                         </select>
+                         
+                     </div>
+                     
+                     
+                     <button type="submit" class="btn btn-primary">Add Cab</button>
+                </form>
+</body>
+</html>

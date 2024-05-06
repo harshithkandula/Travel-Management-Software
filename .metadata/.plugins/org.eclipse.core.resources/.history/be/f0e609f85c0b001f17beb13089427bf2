@@ -1,0 +1,8 @@
+package com.george.app;
+public class Db {
+
+	Connection conn;
+	PreparedStatement ps;
+	
+	
+}

@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Join Here</title>
+</head>
+<body>
+     <h2>Interested to Join George Travels</h2>
+     <h2>Register Here</h2>
+     
+     <form action="join-travels" method="post" modelAttribute="cab">
+     
+     
+             <label for="exampleInputDriverName" class="form-label">Driver Name</label>
+             <input type="text" class="form-control" name="driverName"   style="width:300px"><br><br>
+             <label for="exampleInputRegistrationNumber" class="form-label">Registration Number</label>
+             <input type="text" class="form-control" name="rtNumber" style="width:300px"><br><br>      
+             <label class="form-label" for="exampleInputVehicleType">Vehicle Type</label>
+             <input type="text" class="form-control" name="vehicleType" style="width:300px"><br><br>      
+             <label class="form-label" for="exampleInputPhoneNumber">Phone Number</label>
+             <input type="text" class="form-control" name="PhoneNumber" style="width:300px"><br><br>
+             <label class="form-label" for="exampleInputServiceLocation">Service Location</label>
+             <input type="text" class="form-control" name="serviceLocation" style="width:300px"><br><br> 
+                
+                     
+                     
+                     
+                <button type="submit" class="btn btn-primary">Add Cab</button>
+                     
+      </form>
+</body>
+</html>

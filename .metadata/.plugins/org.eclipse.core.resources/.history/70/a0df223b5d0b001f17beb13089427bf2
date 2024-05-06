@@ -1,0 +1,49 @@
+package com.george.app;
+public class Db {
+
+	Connection conn;
+	PreparedStatement ps;
+	
+	
+       public Db() {
+ 		
+		try {
+			  Class.forName("com.mysql.cj.jdbc.Driver");
+			   conn = DriverManager.getConnection("jdbc:mysql://localhost/travelcompany","root","Ias@2025");
+		   } catch (ClassNotFoundException e) {
+			         // TODO Auto-generated catch block
+			         e.printStackTrace();
+		            } catch (SQLException e) {
+			         // TODO Auto-generated catch block
+			           e.printStackTrace();
+		        }
+	  }
+       
+       
+       public int addRide(Ride r) {
+   		int res=0;
+   		
+   		try {
+   			
+   			String sql = "insert into ride values(null,?,?,?,?,?,?,?,?,?)";
+   			ps = conn.prepareStatement(sql);
+   			ps.setInt(1, r.getCabId());
+   			ps.setString(2, r.getCustomer_name());
+   			ps.setString(3, r.getCustomerPhNo());
+   			ps.setString(4, r.getSource());
+   			ps.setString(5, r.getDestination());
+   			ps.setString(6, r.getPickUpTime());
+   			ps.setString(7, r.getDropTime());
+   			ps.setInt(8, r.getDistance());
+   			ps.setInt(9, r.getFare());
+   			
+   			res = ps.executeUpdate();
+   		}catch(Exception e) {
+   			e.printStackTrace();		
+   		}
+   		
+   		return res;
+   	}
+
+	
+}
